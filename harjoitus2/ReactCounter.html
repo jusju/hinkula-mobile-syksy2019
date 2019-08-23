@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React getting started</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+    <!-- Funktio komponentilla voi olla nyt state -->
+    <!-- React 16.8 hooks 6/2019 -->
+    <!-- setStatea ei ole vaan oma muutosmetodi eikä konstruktoria -->
+    <!-- componentDidMountia ei ole -->
+    <!-- calculate -> viittaus funktioon -->
+    <!-- calculate() -> kutsuu funktiota -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    
+    <script type="text/babel">
+      class Counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {counter: 0};
+        }
+        // funktion määrittelyssä nuolifunktio
+        buttonIncrementPressed = () => {
+          this.setState((prevState) => {
+            return {counter: prevState.counter + 1}
+          });
+        }
+        buttonDecrementPressed = () => {
+          this.setState((prevState) => {
+            return {counter: prevState.counter - 1}
+          });
+        }       
+        buttonPressed = () => {
+          this.setState((prevState) => {
+            return {counter: 0}
+          });
+        }       
+        
+        render() { 
+          return (
+            <div>
+              <div>Counter: {this.state.counter}</div>
+              <button onClick={this.buttonIncrementPressed}>+</button>
+              <button onClick={this.buttonDecrementPressed}>-</button>
+              <button onClick={this.buttonPressed}>Reset</button>
+            </div>
+          );
+        }
+      }
+      
+      ReactDOM.render(<Counter /> , document.getElementById('root'));
+    </script>
+  </body>
+</html>

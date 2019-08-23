@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React getting started</title>
+  </head>
+  <body>
+    <!-- Root container for react components -->
+    <div id='root'></div>
+ 
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <!-- isännältä tieto valuu alaspäin, yksisuuntainen tietovirta vaikka propseilla -->
+    <!-- javascriptissä luokat meni prototyyppien kautta -->
+    <!-- funktiolla metodeja vai luokalla metodeja? -->
+    <!-- super on pakollinen javascriptissä -->
+    <!-- nuolifunktiot-->
+    <!--  x => x + 1 (vasen puoli argumentit, oikealla puolella mitä palauttaa)  -->
+    <!-- funktiota ei voi kutsua, jos sillä ei ole nimeä -->
+    <!--  callback, kun jotain tapahtuu niin sitten suoritetaan tämä funktio -->
+    <!--  jos funktio kirjoitetaan toisen funktion sisälle, niin ei tarvi nimeä -->
+    <!-- const a = x => x + 1  -->
+    <!-- var on funktio scope -->
+    <!-- funktion sisälle näkyy jokapuolelle -->
+    <!-- block scope, const ja var -->
+    <!-- const olion arvoja voi vaihtaa -->
+    <!-- Stringien interpolaatio/konkatenaatio -->
+    <!-- ´Hello $person{moro} ´ -->
+    <!-- state on data, jota muutetaan -->
+    <!-- vain komponentti itse pystyy muokkaamaan omaa stateaan -->
+    <!-- staten arvo muuttuu, eikä propsin arvo muuttuu -->
+    <!-- Komponentti alkaa aina isolla kirjaimella, camel casea -->
+    <!-- komponentteja yms ei nimetä suomeksi -->
+    <!-- render kertoo miten elementti renderöidään -->
+    <!-- {} jsx extension syntax.  -->
+    <!-- render saa palauttaa aina vain yhden elementin eli divin -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <script type="text/babel">
+        class HelloComponent extends React.Component {
+            render() {
+                return <div>Hello World {this.props.firstname}</div>;
+            }
+        }
+        ReactDOM.render(<HelloComponent firstname="John" />,
+        document.getElementById('root'));
+    </script>
+  </body>
+</html>
