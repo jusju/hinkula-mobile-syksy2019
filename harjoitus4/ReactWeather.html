@@ -6,6 +6,9 @@
   </head>
   <body>
     <!-- Root container for react components -->
+    <!-- funktio komponentilla voi olla nyt state -->
+    <!-- if (icon !=== '') -->
+
     <div id='root'></div>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
@@ -41,11 +44,9 @@
           <div>Weather: {weather}</div> 
           <div><img src={image} /></div>
         </div>
-      );
-
-    
+      );    
   }
-      ReactDOM.render(<RestWeather />, document.getElementById('root'));
+ReactDOM.render(<RestWeather />, document.getElementById('root'));
 
     </script>
   </body>
