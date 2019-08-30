@@ -15,31 +15,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
     
     <script type="text/babel">
-class GithubList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {listItems: []};
-  }
 
-  componentDidMount() {
-    fetch('https://api.github.com/search/repositories?q=react')
-    .then((response) => response.json()) 
-    .then((responseData) => { 
-      this.setState({ 
-        listItems: responseData.items
+const GithubList = () => {
+    const [items, setItems] = React.useState([]);
+
+    const fetchData = () => { 
+      fetch('https://api.github.com/search/repositories?q=react')
+      .then((response) => response.json()) 
+      .then((responseData) => { 
+        setItems(responseData.items);
       }); 
-    })        
-  }
+    }       
   
-  render() {
 
-    const itemRows = this.state.listItems.map((repository, index) => 
+    React.useEffect(() => {
+        fetchData();
+      }, []
+    )
+
+    const itemRows = items.map((repository, index) => 
         <tr key={index}>
           <td>{repository.full_name}</td>
           <td><a href={repository.html_url}>{'http://github.com/' 
           + repository.full_name}</a></td>
         </tr>
-      )
+    )
      
     return (
       <div>
@@ -52,15 +52,11 @@ class GithubList extends React.Component {
         </table>
       </div>
     );
+  
   }
-}
-
-
-
-      
+ 
       ReactDOM.render(<GithubList />, document.getElementById('root'));
    
-
     </script>
   </body>
 </html>

@@ -16,63 +16,58 @@
     
     <script type="text/babel">
 
-   
+const GithubList = () => {
+    const [items, setItems] = React.useState([]);
+    const [name, setName] = React.useState('');
 
-class GithubList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { listItems: [], name: '' };
-  }
-
-
-  searchAction = () => {
-    fetch("https://api.github.com/search/repositories?q=" + this.state.name)
-    .then(response => response.json())
-    .then(responseData => {
-      this.setState({
-        listItems: responseData.items
-      });
-    });
-  }
+    const fetchData = () => { 
+      fetch('https://api.github.com/search/repositories?q=react' + name)
+      .then((response) => response.json()) 
+      .then((responseData) => { 
+        setItems(responseData.items);
+      }); 
+    }       
 
 
-  inputChanged = event => {
-    this.setState({ name: event.target.value });
-  };
+    const inputChanged = event => {
+      setName(event.target.value );
+    };
+  
 
-  render() {
-    const itemRows = this.state.listItems.map((repository, index) => (
-      <tr key={index}>
-        <td>{repository.full_name}</td>
-        <td>
-          <a href={repository.html_url}>
-            {"http://github.com/" + repository.full_name}
-          </a>
-        </td>
-      </tr>
-    ));
+    React.useEffect(() => {
+        fetchData();
+      }, []
+    )
 
+    const itemRows = items.map((repository, index) => 
+        <tr key={index}>
+          <td>{repository.full_name}</td>
+          <td><a href={repository.html_url}>{'http://github.com/' 
+          + repository.full_name}</a></td>
+        </tr>
+    )
+     
     return (
       <div>
-        <input type="text" value={this.state.name} onChange={this.inputChanged} />
-        <button onClick={this.searchAction}>Search</button>
         <h2>Repositories</h2>
+        <input type="text" value={name} onChange={inputChanged} />
+        <button onClick={fetchData}>Search</button>
         <table>
           <tbody>
-            <tr>
-              <th>Name</th>
-              <th>URL</th>
-            </tr>
+           
+
+            <tr><th>Name</th><th>URL</th></tr>
             {itemRows}
           </tbody>
         </table>
       </div>
     );
+  
   }
-}
-
-      
+ 
       ReactDOM.render(<GithubList />, document.getElementById('root'));
+
+
 
     </script>
   </body>
