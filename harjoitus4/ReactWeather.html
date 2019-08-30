@@ -8,6 +8,7 @@
     <!-- Root container for react components -->
     <!-- funktio komponentilla voi olla nyt state -->
     <!-- if (icon !=== '') -->
+    <!-- map tekee jokaisen elementille tietyn toiminnon -->
 
     <div id='root'></div>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -30,7 +31,8 @@
           setTemperature(responseData.main.temp);
           setWeather(responseData.weather[0].main);
           setImage("http://openweathermap.org/img/w/" + responseData.weather[0].icon + ".png");
-        }); 
+        })
+        .catch(error => console.err(errror)) 
       }
     
       React.useEffect(() => {
